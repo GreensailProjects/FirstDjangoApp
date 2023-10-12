@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block title %} Topic{% endblock %}
+
+{% block content %}
+<p>Topic</p>
+<ul>
+    {% for topic in topics %}
+    <li>
+        <a href="{% url 'main:topic' topic.id %}">{{topic}}</a>
+    </li>
+    {% empty %}
+    <li>No topics have been added yet</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
