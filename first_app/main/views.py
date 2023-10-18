@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Topic
+from .forms import TopicForm
 
 
 # Create your views here.
@@ -20,3 +21,20 @@ def topic(request, topic_id):
         'topic':topic, 'entries':entries
     }
     return render(request, 'main/topic.html', context)
+
+def new_topic(request):
+    if request.method != 'POST':
+        form = TopicForm()
+    else:
+        form = TopicForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main:topics')
+    context = {'form': form}
+    return render(request, 'main/new_topic.html', context)
+
+
+
+
+
+

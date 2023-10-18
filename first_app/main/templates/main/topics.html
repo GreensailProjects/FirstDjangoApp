@@ -2,15 +2,16 @@
 {% block title %} Topic{% endblock %}
 
 {% block content %}
-<p>Topic</p>
-<ul>
-    {% for topic in topics %}
-    <li>
-        <a href="{% url 'main:topic' topic.id %}">{{topic}}</a>
-    </li>
-    {% empty %}
-    <li>No topics have been added yet</li>
-    {% endfor %}
-</ul>
+    <p>Topic</p>
+    <ul>
+        {% for topic in topics %}
+        <li>
+            <a href="{% url 'main:topic' topic.id %}">{{topic}}</a>
+        </li>
+        {% empty %}
+        <li>No topics have been added yet</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'main:new_topic' %}">Add new topic</a>
 {% endblock %}
 
